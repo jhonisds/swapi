@@ -1,0 +1,87 @@
+16:50:30.192 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.690.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+16:50:30.192 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.686.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+16:50:30.192 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.693.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+16:50:30.192 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.694.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+16:50:30.192 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.685.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+16:50:30.192 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.691.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+16:50:30.192 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.692.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+16:50:30.192 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.687.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+16:50:30.192 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.688.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+16:50:30.192 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.689.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+18:43:50.802 module=application_controller [info] Application hammer exited: Hammer.Application.start(:normal, []) returned an error: shutdown: failed to start child: :hammer_backend_single_pool
+    ** (EXIT) an exception was raised:
+        ** (MatchError) no match of right hand side value: {:error, {%RuntimeError{message: "Missing required config: expiry_ms"}, [{Hammer.Backend.ETS, :init, 1, [file: 'lib/hammer/backend/ets.ex', line: 169]}, {:gen_server, :init_it, 2, [file: 'gen_server.erl', line: 851]}, {:gen_server, :init_it, 6, [file: 'gen_server.erl', line: 814]}, {:proc_lib, :init_p_do_apply, 3, [file: 'proc_lib.erl', line: 240]}]}}
+            (poolboy 1.5.2) /Users/jsousa/Projects/elixir_code/swapi/deps/poolboy/src/poolboy.erl:283: :poolboy.new_worker/1
+            (poolboy 1.5.2) /Users/jsousa/Projects/elixir_code/swapi/deps/poolboy/src/poolboy.erl:304: :poolboy.prepopulate/3
+            (poolboy 1.5.2) /Users/jsousa/Projects/elixir_code/swapi/deps/poolboy/src/poolboy.erl:153: :poolboy.init/3
+            (stdlib 4.2) gen_server.erl:851: :gen_server.init_it/2
+            (stdlib 4.2) gen_server.erl:814: :gen_server.init_it/6
+            (stdlib 4.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+18:43:50.811 module=application_controller [info] Application poolboy exited: :stopped
+18:43:50.811 module=application_controller [info] Application httpoison exited: :stopped
+18:43:50.802 module=gen_server [error] GenServer #PID<0.844.0> terminating
+** (MatchError) no match of right hand side value: {:error, {%RuntimeError{message: "Missing required config: expiry_ms"}, [{Hammer.Backend.ETS, :init, 1, [file: 'lib/hammer/backend/ets.ex', line: 169]}, {:gen_server, :init_it, 2, [file: 'gen_server.erl', line: 851]}, {:gen_server, :init_it, 6, [file: 'gen_server.erl', line: 814]}, {:proc_lib, :init_p_do_apply, 3, [file: 'proc_lib.erl', line: 240]}]}}
+    (poolboy 1.5.2) /Users/jsousa/Projects/elixir_code/swapi/deps/poolboy/src/poolboy.erl:283: :poolboy.new_worker/1
+    (poolboy 1.5.2) /Users/jsousa/Projects/elixir_code/swapi/deps/poolboy/src/poolboy.erl:304: :poolboy.prepopulate/3
+    (poolboy 1.5.2) /Users/jsousa/Projects/elixir_code/swapi/deps/poolboy/src/poolboy.erl:153: :poolboy.init/3
+    (stdlib 4.2) gen_server.erl:851: :gen_server.init_it/2
+    (stdlib 4.2) gen_server.erl:814: :gen_server.init_it/6
+    (stdlib 4.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+Last message: {:EXIT, #PID<0.843.0>, {{:badmatch, {:error, {%RuntimeError{message: "Missing required config: expiry_ms"}, [{Hammer.Backend.ETS, :init, 1, [file: 'lib/hammer/backend/ets.ex', line: 169]}, {:gen_server, :init_it, 2, [file: 'gen_server.erl', line: 851]}, {:gen_server, :init_it, 6, [file: 'gen_server.erl', line: 814]}, {:proc_lib, :init_p_do_apply, 3, [file: 'proc_lib.erl', line: 240]}]}}}, [{:poolboy, :new_worker, 1, [file: '/Users/jsousa/Projects/elixir_code/swapi/deps/poolboy/src/poolboy.erl', line: 283]}, {:poolboy, :prepopulate, 3, [file: '/Users/jsousa/Projects/elixir_code/swapi/deps/poolboy/src/poolboy.erl', line: 304]}, {:poolboy, :init, 3, [file: '/Users/jsousa/Projects/elixir_code/swapi/deps/poolboy/src/poolboy.erl', line: 153]}, {:gen_server, :init_it, 2, [file: 'gen_server.erl', line: 851]}, {:gen_server, :init_it, 6, [file: 'gen_server.erl', line: 814]}, {:proc_lib, :init_p_do_apply, 3, [file: 'proc_lib.erl', line: 240]}]}}
+State: {:state, {#PID<0.844.0>, :poolboy_sup}, :simple_one_for_one, {[Hammer.Backend.ETS], %{Hammer.Backend.ETS => {:child, :undefined, Hammer.Backend.ETS, {Hammer.Backend.ETS, :start_link, [[]]}, :temporary, false, 5000, :worker, [Hammer.Backend.ETS]}}}, {:mapsets, %{}}, 0, 1, [], 0, :never, :poolboy_sup, {Hammer.Backend.ETS, []}}
+18:43:50.811 module=application_controller [info] Application hackney exited: :stopped
+18:43:50.811 module=application_controller [info] Application metrics exited: :stopped
+18:43:50.811 module=application_controller [info] Application ssl_verify_fun exited: :stopped
+18:43:50.811 module=application_controller [info] Application parse_trans exited: :stopped
+18:43:50.811 module=application_controller [info] Application syntax_tools exited: :stopped
+18:43:50.811 module=application_controller [info] Application certifi exited: :stopped
+18:43:50.811 module=application_controller [info] Application mimerl exited: :stopped
+18:43:50.811 module=application_controller [info] Application idna exited: :stopped
+18:43:50.811 module=application_controller [info] Application unicode_util_compat exited: :stopped
+18:43:50.811 module=application_controller [info] Application ecto_enum exited: :stopped
+18:43:50.811 module=application_controller [info] Application clean_architecture exited: :stopped
+18:43:50.811 module=application_controller [info] Application plug_cowboy exited: :stopped
+18:43:50.811 module=application_controller [info] Application cowboy_telemetry exited: :stopped
+18:43:50.812 module=application_controller [info] Application cowboy exited: :stopped
+18:43:50.812 module=application_controller [info] Application ranch exited: :stopped
+18:43:50.812 module=application_controller [info] Application cowlib exited: :stopped
+18:43:50.830 module=application_controller [info] Application jason exited: :stopped
+18:43:50.830 module=application_controller [info] Application gettext exited: :stopped
+18:43:50.830 module=application_controller [info] Application telemetry_poller exited: :stopped
+18:43:50.830 module=application_controller [info] Application phoenix_live_dashboard exited: :stopped
+18:43:50.830 module=application_controller [info] Application telemetry_metrics exited: :stopped
+18:43:50.830 module=application_controller [info] Application phoenix_live_view exited: :stopped
+18:43:50.830 module=application_controller [info] Application phoenix_html exited: :stopped
+18:43:50.831 module=application_controller [info] Application phoenix_ecto exited: :stopped
+18:43:50.831 module=application_controller [info] Application phoenix exited: :stopped
+18:43:50.831 module=application_controller [info] Application castore exited: :stopped
+18:43:50.831 module=application_controller [info] Application phoenix_view exited: :stopped
+18:43:50.831 module=application_controller [info] Application phoenix_template exited: :stopped
+18:43:50.831 module=application_controller [info] Application phoenix_pubsub exited: :stopped
+18:43:50.831 module=application_controller [info] Application plug exited: :stopped
+18:43:50.832 module=application_controller [info] Application plug_crypto exited: :stopped
+18:43:50.832 module=application_controller [info] Application mime exited: :stopped
+18:43:50.832 module=application_controller [info] Application runtime_tools exited: :stopped
+18:43:50.832 module=application_controller [info] Application logger_file_backend exited: :stopped
+18:44:30.792 module=Phoenix.Endpoint.Cowboy2Adapter [info] Running SwapiWeb.Endpoint with cowboy 2.9.0 at 0.0.0.0:4000 (http)
+18:44:30.799 module=Phoenix.Endpoint.Supervisor [info] Access SwapiWeb.Endpoint at http://localhost:4000
+18:46:36.088 module=Phoenix.Logger [info] GET /
+18:46:36.123 module=Phoenix.Logger [info] Sent 200 in 34ms
+18:47:36.184 module=Phoenix.Endpoint.Cowboy2Adapter [info] Running SwapiWeb.Endpoint with cowboy 2.9.0 at 0.0.0.0:4000 (http)
+18:47:36.186 module=Phoenix.Endpoint.Supervisor [info] Access SwapiWeb.Endpoint at http://localhost:4000
+18:51:57.063 module=Phoenix.Endpoint.Cowboy2Adapter [info] Running SwapiWeb.Endpoint with cowboy 2.9.0 at 0.0.0.0:4000 (http)
+18:51:57.067 module=Phoenix.Endpoint.Supervisor [info] Access SwapiWeb.Endpoint at http://localhost:4000
+18:53:18.518 module=Phoenix.Endpoint.Cowboy2Adapter [info] Running SwapiWeb.Endpoint with cowboy 2.9.0 at 0.0.0.0:4000 (http)
+18:53:18.521 module=Phoenix.Endpoint.Supervisor [info] Access SwapiWeb.Endpoint at http://localhost:4000
+18:54:12.261 module=Phoenix.Logger [info] GET /
+18:54:12.289 module=Phoenix.Logger [info] Sent 200 in 28ms
+19:18:10.545 module=Phoenix.Endpoint.Cowboy2Adapter [info] Running SwapiWeb.Endpoint with cowboy 2.9.0 at 0.0.0.0:4000 (http)
+19:18:10.549 module=Phoenix.Endpoint.Supervisor [info] Access SwapiWeb.Endpoint at http://localhost:4000
+19:18:49.996 module=Phoenix.Logger [info] GET /
+19:18:50.025 module=Phoenix.Logger [info] Sent 200 in 29ms
+19:18:50.767 module=Phoenix.Logger [info] GET /
+19:18:50.769 module=Phoenix.Logger [info] Sent 200 in 1ms
+19:18:55.795 module=Phoenix.Logger [info] GET /
+19:18:55.796 module=Phoenix.Logger [info] Sent 200 in 1ms
+19:18:56.287 module=Phoenix.Logger [info] GET /
+19:18:56.288 module=Phoenix.Logger [info] Sent 200 in 1ms
