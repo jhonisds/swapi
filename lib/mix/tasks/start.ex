@@ -1,6 +1,6 @@
 defmodule Mix.Tasks.Start do
   @moduledoc """
-  The task responsible for loading a planet from the integration.
+  The task responsible for show user interface that loading a planet from the integration.
   """
 
   use Mix.Task

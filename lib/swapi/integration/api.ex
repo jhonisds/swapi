@@ -1,10 +1,10 @@
-defmodule Swapi.Integration.StarWarsAPI do
+defmodule Swapi.Integration.API do
   @moduledoc """
   Send request to the Star Wars public API.
   """
 
   alias Swapi.HTTPClient
-  alias Swapi.Integration.ParserResponse
+  alias Swapi.Integration.APIResponse
 
   @base_url "https://swapi.dev/api"
 
@@ -36,29 +36,25 @@ defmodule Swapi.Integration.StarWarsAPI do
     send_request("#{@base_url}/#{resource}/#{id}/")
   end
 
+  def get_resource(url) do
+    send_request(url)
+  end
+
   defp send_request(url) do
     case HTTPClient.get(url) do
       {:ok, %HTTPoison.Response{body: body}} ->
         body
-        |> ParserResponse.map_to_atom()
-        |> ParserResponse.resource()
+        |> APIResponse.map_to_atom()
+        |> APIResponse.resource()
 
       {:error, error} ->
         {:error, error}
     end
   end
 
-  def get_movies(movie_urls) do
-    movie_urls
-    |> Enum.map(fn movie_url ->
-      ids =
-        movie_url
-        |> ParserResponse.extract_id_from_integration()
-
-      get_resource("films", ids)
-    end)
-    |> Enum.map(fn {:ok, movie} ->
-      movie
-    end)
+  def list_resources_by_urls(urls) do
+    urls
+    |> Enum.map(&get_resource(&1))
+    |> Enum.map(fn {:ok, response} -> response end)
   end
 end

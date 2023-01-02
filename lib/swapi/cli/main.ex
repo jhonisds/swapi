@@ -1,6 +1,6 @@
 defmodule Swapi.Cli.Main do
   @moduledoc """
-  Module responsible to open user interface.
+  Perform CLI interaction.
   """
   alias Mix.Shell.IO, as: Shell
   alias Swapi.Cli.UserInterface

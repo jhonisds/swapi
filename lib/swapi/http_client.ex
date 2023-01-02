@@ -16,4 +16,8 @@ defmodule Swapi.HTTPClient do
        when is_integer(status_code) and status_code >= 300 do
     {:error, "Resource not found - status code: #{status_code}"}
   end
+
+  defp response({:error, %HTTPoison.Error{reason: reason}}) do
+    {:error, reason}
+  end
 end
