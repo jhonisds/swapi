@@ -8,10 +8,10 @@ defmodule Swapi.Integration.APIResponse do
   alias Swapi.Integration.Resources.Film
   alias Swapi.Integration.Resources.People
   alias Swapi.Integration.Resources.Planet
+  alias Swapi.Integration.Resources.Root
   alias Swapi.Integration.Resources.Specie
   alias Swapi.Integration.Resources.Starship
   alias Swapi.Integration.Resources.Vehicle
-  alias Swapi.Integration.Resources.Root
 
   def get_integration_id(url) when is_binary(url) do
     url

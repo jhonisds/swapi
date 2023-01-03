@@ -7,19 +7,21 @@ defmodule Swapi.Cli.UserInterface do
 
   require Logger
 
-  @options ["Exit"]
+  # @options ["Exit"]
 
   def options do
-    case Swapi.Integration.API.list_resources() do
-      {:ok, options} ->
-        options
-        |> Map.from_struct()
-        |> Enum.into([], fn {k, _v} -> Atom.to_string(k) end)
-        |> List.insert_at(-1, @options)
+    ["planets", "exit"]
 
-      {:error, _reason} ->
-        display_invalid_option("Service is not available.")
-    end
+    # case Swapi.Integration.API.list_resources() do
+    #   {:ok, options} ->
+    #     options
+    #     |> Map.from_struct()
+    #     |> Enum.into([], fn {k, _v} -> Atom.to_string(k) end)
+    #     |> List.insert_at(-1, @options)
+
+    #   {:error, _reason} ->
+    #     display_invalid_option("Service is not available.")
+    # end
   end
 
   def start do
@@ -107,7 +109,7 @@ defmodule Swapi.Cli.UserInterface do
 
     integration_id = Shell.prompt("Enter the [:id]:")
 
-    case Swapi.Integration.API.get_resource(resource, integration_id) do
+    case Swapi.load_planet(%{resource: resource, integration_id: integration_id}) do
       {:ok, response} ->
         Logger.info(
           "#{String.capitalize(resource)} was successfully integrated! - #{inspect(response)}",

@@ -12,7 +12,7 @@ defmodule Swapi.Integration.API do
   Gets a list of available resources.
 
   Example:
-      iex> Swapi.Integration.StarWarsAPI.list_resources
+      iex> Swapi.Integration.API.list_resources
       {:ok, %Swapi.Integration.Resource{
         films: "https://swapi.dev/api/films/",
         people: "https://swapi.dev/api/people/",
@@ -29,7 +29,7 @@ defmodule Swapi.Integration.API do
   Gets a resource from the Star Wars Universe.
 
   Example:
-      iex> Swapi.Integration.StarWarsAPI.get_resource("planet", 1)
+      iex> Swapi.Integration.API.get_resource("planet", 1)
       {:ok,  {[...]}}
   """
   def get_resource(resource, id) do
