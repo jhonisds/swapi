@@ -26,6 +26,8 @@ defmodule SwapiWeb.ConnCase do
 
       alias SwapiWeb.Router.Helpers, as: Routes
 
+      alias Swapi.Support.Factory
+
       # The default endpoint for testing
       @endpoint SwapiWeb.Endpoint
     end

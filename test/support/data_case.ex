@@ -20,6 +20,8 @@ defmodule Swapi.DataCase do
     quote do
       alias Swapi.Repo
 
+      alias Swapi.Support.Factory
+
       import Ecto
       import Ecto.Changeset
       import Ecto.Query

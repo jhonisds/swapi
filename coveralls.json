@@ -5,7 +5,14 @@
     "lib/swapi_web.ex",
     "lib/swapi_web/telemetry.ex",
     "lib/swapi_web/router.ex",
-    "lib/swapi_web/views/error_helpers.ex"
+    "lib/swapi_web/views/error_helpers.ex",
+    "lib/mix/tasks/start.ex",
+    "lib/swapi/cli/main.ex",
+    "lib/swapi/cli/user_interface.ex",
+    "lib/swapi/http_client.ex",
+    "lib/swapi/integration/api.ex",
+    "lib/swapi/integration/api_response.ex",
+    "lib/swapi/interactors/planet/load.ex"
   ],
   "coverage_options": {
     "minimum_coverage": 100

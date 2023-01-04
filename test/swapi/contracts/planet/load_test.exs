@@ -1,7 +1,7 @@
-defmodule Swapi.Contracts.Planet.LoadResourceTest do
+defmodule Swapi.Contracts.Planet.LoadTest do
   use Swapi.DataCase
 
-  alias Swapi.Contracts.Planet.LoadResource
+  alias Swapi.Contracts.Planet.Load
 
   @valid_attrs %{
     resource: "planet",
@@ -10,13 +10,13 @@ defmodule Swapi.Contracts.Planet.LoadResourceTest do
 
   describe "changeset" do
     test "creates valid changeset when all parameters are valid" do
-      changeset = LoadResource.changeset(@valid_attrs)
+      changeset = Load.changeset(@valid_attrs)
 
       assert changeset.valid?
     end
 
     test "returns error when changeset is missing any required field" do
-      changeset = LoadResource.changeset(%{})
+      changeset = Load.changeset(%{})
 
       assert Enum.sort(changeset.errors) ==
                Enum.sort(
@@ -27,7 +27,7 @@ defmodule Swapi.Contracts.Planet.LoadResourceTest do
 
     test "returns error when resource is invalid" do
       attrs = Map.put(@valid_attrs, :resource, :invalid)
-      changeset = LoadResource.changeset(attrs)
+      changeset = Load.changeset(attrs)
 
       assert "is invalid" in errors_on(changeset).resource
     end

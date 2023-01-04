@@ -12,6 +12,58 @@ defmodule Swapi do
   alias Swapi.Entities.Film
   alias Swapi.Entities.Planet
 
+  # Film
+
+  @doc """
+  Returns the list of films.
+
+  ## Examples
+      iex> list_films()
+      %Pagination{
+        entries: [], page_number: 1, page_size: 10, total_entries: 0, total_pages: 0
+      }
+
+      iex> list_films(%{page: 2, page_size: 4})
+      %Pagination{
+        entries: [%Film{}, ...], page_number: 2, page_size: 4, total_entries: 8, total_pages: 2
+      }
+  """
+  def list_films(input \\ %{}) do
+    case Contracts.Film.List.validate_input(input) do
+      {:ok, validated_input} ->
+        %Pagination{entries: _, page_number: _, page_size: _, total_entries: _, total_pages: _} =
+          Interactors.Film.List.call(validated_input)
+
+      {:error, %Changeset{} = changeset} ->
+        {:error, changeset}
+    end
+  end
+
+  @doc """
+  Gets a film by id.
+  Raises `Ecto.NoResultError` if the Film does not exist.
+
+  ## Examples
+      iex> get_film!(%{id: "679a45df-380c-4057-ac73-a0f1de5abb5b"}
+      {:ok, %Film{}}
+
+      iex> get_film!(%{id: "d5265c50-67ab-4a11-8d7e-8c2caa589634"}
+      ** (Ecto.NoResultsError)
+
+      iex> get_film!(%{id: "invalid"}
+      ** (Ecto.Query.CastError)
+  """
+
+  def get_film!(input) do
+    case Contracts.Film.Get.validate_input(input) do
+      {:ok, validated_input} ->
+        %Film{} = Interactors.Film.Get.call(validated_input)
+
+      {:error, %Changeset{} = changeset} ->
+        {:error, changeset}
+    end
+  end
+
   @doc """
   Creates or updates a film.
 
@@ -125,6 +177,27 @@ defmodule Swapi do
 
       {:error, error} ->
         {:error, error}
+    end
+  end
+
+  @doc """
+  Deletes a planet.
+
+  ## Examples
+      iex> delete_planet(%{field: "value"})
+      {:ok, %Planet{}}
+
+      iex> delete_planet(%{field: "bad_value"})
+      {:error, %Ecto.Changeset{}}
+  """
+  def delete_planet(%{} = input) do
+    with {:ok, validated_input} <- Contracts.Planet.Delete.validate_input(input),
+         {:ok, %Planet{} = planet} <-
+           Interactors.Planet.Delete.call(validated_input) do
+      {:ok, planet}
+    else
+      {:error, %Changeset{} = changeset} ->
+        {:error, changeset}
     end
   end
 end
