@@ -77,23 +77,37 @@ defmodule Swapi.Interactors.Planet.UpsertTest do
       assert Repo.aggregate(Planet, :count, :id) == 1
     end
 
-    test "creates a planet when planet with integration attrs exists but was deleted" do
-      deleted_planet =
-        planet_fixture(%{
-          integration_id: @valid_attrs.integration_id,
-          deleted_at: DateTime.now!("Etc/UTC")
-        })
+    # test "updates a planet when planet already exists but the name contains empty spaces" do
+    #   planet_fixture(%{
+    #     integration_source: @valid_attrs.integration_source,
+    #     integration_id: @valid_attrs.integration_id
+    #   })
 
-      assert Repo.aggregate(Planet, :count, :id) == 1
+    #   assert Repo.aggregate(Planet, :count, :id) == 1
 
-      assert {:ok, %Planet{} = planet} = Upsert.call(@valid_attrs)
+    #   assert {:ok, %Planet{} = planet} =
+    #            @valid_attrs |> Map.put(:name, " #{@valid_attrs.name}  ") |> Upsert.call()
 
-      assert planet.id != deleted_planet.id
-      assert planet.name == @valid_attrs.name
-      assert planet.deleted_at == nil
+    #   assert_has_upserted_planet_attrs(planet)
 
-      assert Repo.aggregate(Planet, :count, :id) == 2
-    end
+    #   assert Repo.aggregate(Planet, :count, :id) == 1
+    # end
+
+    # test "updates a planet when planet already exists but the name is lower cased" do
+    #   planet_fixture(%{
+    #     integration_source: @valid_attrs.integration_source,
+    #     integration_id: @valid_attrs.integration_id
+    #   })
+
+    #   assert Repo.aggregate(Planet, :count, :id) == 1
+
+    #   assert {:ok, %Planet{} = planet} =
+    #            @valid_attrs |> Map.put(:name, String.downcase(@valid_attrs.name)) |> Upsert.call()
+
+    #   assert_has_upserted_planet_attrs(planet)
+
+    #   assert Repo.aggregate(Planet, :count, :id) == 1
+    # end
 
     test "updates a planet when planet already exists removing existent associations" do
       film_one = Factory.insert(:film)
@@ -121,11 +135,30 @@ defmodule Swapi.Interactors.Planet.UpsertTest do
       assert planet.films == [film_one]
 
       reloaded_planet = planet |> Repo.reload!() |> Repo.preload([:films])
+
       assert reloaded_planet.films == [Repo.reload!(film_one)]
 
       assert Repo.reload!(film_two)
 
       assert Repo.aggregate(Planet, :count, :id) == 1
+    end
+
+    test "creates a planet when planet with integration attrs exists but was deleted" do
+      deleted_planet =
+        planet_fixture(%{
+          integration_id: @valid_attrs.integration_id,
+          deleted_at: DateTime.now!("Etc/UTC")
+        })
+
+      assert Repo.aggregate(Planet, :count, :id) == 1
+
+      assert {:ok, %Planet{} = planet} = Upsert.call(@valid_attrs)
+
+      assert planet.id != deleted_planet.id
+      assert planet.name == @valid_attrs.name
+      assert planet.deleted_at == nil
+
+      assert Repo.aggregate(Planet, :count, :id) == 2
     end
   end
 end

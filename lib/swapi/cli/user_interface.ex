@@ -7,21 +7,8 @@ defmodule Swapi.Cli.UserInterface do
 
   require Logger
 
-  # @options ["Exit"]
-
   def options do
     ["planets", "exit"]
-
-    # case Swapi.Integration.API.list_resources() do
-    #   {:ok, options} ->
-    #     options
-    #     |> Map.from_struct()
-    #     |> Enum.into([], fn {k, _v} -> Atom.to_string(k) end)
-    #     |> List.insert_at(-1, @options)
-
-    #   {:error, _reason} ->
-    #     display_invalid_option("Service is not available.")
-    # end
   end
 
   def start do
@@ -93,10 +80,10 @@ defmodule Swapi.Cli.UserInterface do
 
   defp launch_choice(mode) do
     case mode[:index] do
-      x when x in 0..5 ->
+      0 ->
         input(mode[:description])
 
-      6 ->
+      1 ->
         Shell.info("May the force be with you.")
         Shell.cmd("exit")
     end
@@ -118,6 +105,7 @@ defmodule Swapi.Cli.UserInterface do
         )
 
       {:error, reason} ->
+        Logger.log(:error, reason, module: __MODULE__, function_name: :input)
         display_invalid_option(reason)
     end
   end

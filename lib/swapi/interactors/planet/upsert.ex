@@ -58,12 +58,9 @@ defmodule Swapi.Interactors.Planet.Upsert do
     {:ok, preload_associations!(planet)}
   end
 
-  defp preload_associations(error_response), do: error_response
-
   defp preload_associations!(%Planet{} = planet) do
     Repo.preload(planet, [:films])
   end
 
   defp handle_output({:ok, %Planet{} = planet}), do: {:ok, planet}
-  defp handle_output({:error, %Ecto.Changeset{} = changeset}), do: {:error, changeset}
 end

@@ -40,3 +40,6 @@ State: {:state, {#PID<0.844.0>, :poolboy_sup}, :simple_one_for_one, {[Hammer.Bac
 17:02:09.705 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.496.0>) failed to connect: ** (DBConnection.ConnectionError) tcp connect (localhost:5432): connection refused - :econnrefused
 17:02:09.885 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.504.0>) failed to connect: ** (DBConnection.ConnectionError) tcp connect (localhost:5432): connection refused - :econnrefused
 17:02:10.039 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.498.0>) failed to connect: ** (DBConnection.ConnectionError) tcp connect (localhost:5432): connection refused - :econnrefused
+17:31:15.787 module=Swapi.Cli.UserInterface function_name=input [error] Resource not found - status code: 404
+17:33:29.213 [error] Failed to start Ranch listener SwapiWeb.Endpoint.HTTP in :ranch_tcp:listen([cacerts: :..., key: :..., cert: :..., ip: {0, 0, 0, 0}, port: 4000]) for reason :eaddrinuse (address already in use)
+

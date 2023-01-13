@@ -1,7 +1,6 @@
 defmodule Swapi.Integration.Resources.FilmTest do
   use Swapi.DataCase
 
-  alias Credo.CLI.Filename
   alias Swapi.Integration.Resources.Film
 
   describe "struct" do

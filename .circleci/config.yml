@@ -15,6 +15,9 @@ workflows:
       - test:
           requires:
             - setup
+      - api_docs:
+          requires:
+            - setup
 
 default_env: &default_env
   MIX_ENV: test
@@ -116,3 +119,11 @@ jobs:
       - store_artifacts:
           path: /usr/app/cover
           destination: coverage_results
+
+  api_docs:
+    executor: default
+    resource_class: medium
+    steps:
+      - checkout
+      - run: npm install dredd@14.1.0 --global
+      - run: dredd

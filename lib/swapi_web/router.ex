@@ -11,6 +11,12 @@ defmodule SwapiWeb.Router do
     get "/", HealthCheckController, :index
   end
 
+  scope "/v1", SwapiWeb.V1 do
+    pipe_through :api
+
+    resources "/planets", PlanetController, only: [:index, :show, :delete]
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
