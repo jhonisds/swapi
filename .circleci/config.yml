@@ -15,9 +15,6 @@ workflows:
       - test:
           requires:
             - setup
-      - api_docs:
-          requires:
-            - setup
 
 default_env: &default_env
   MIX_ENV: test
@@ -35,7 +32,6 @@ executors:
       <<: *default_env
     docker:
       - image: hexpm/elixir:1.14.2-erlang-25.1.2-alpine-3.16.2
-      - image: "circleci/node:latest"
       - image: postgres:15.1
         command: postgres -c max_connections=300
         environment:
@@ -120,11 +116,3 @@ jobs:
       - store_artifacts:
           path: /usr/app/cover
           destination: coverage_results
-
-  api_docs:
-    executor: default
-    resource_class: medium
-    steps:
-      - checkout
-      - run: npm install dredd@14.1.0 --global
-      - run: dredd
