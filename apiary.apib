@@ -3,78 +3,139 @@ HOST: https://polls.apiblueprint.org/
 
 # Swapi
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Documentation for Swapi APIs.
 
-## Questions Collection [/questions]
+# Group Resources
+Represents the planets resources. 
 
-### List All Questions [GET]
+## Planet [/v1/planets/]
+Planet resources.
+
+
+### List all planets [GET /v1/planets{?name,page,page_size}]
+Returns a list of planets.
+
++ Parameters
+
+  + name: Tatooine (string, optional) - `ID` of the Planet.
+  + page: 1 (integer, optional) - Page used for pagination. Default is 1.    
+     + Default: 1
+  + page_size: 10 (integer, optional) - Page size used for pagination. Default is 10.
+     + Default: 10
 
 + Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+    + Attributes 
+        + data (array[Attrs Planet])
+        + meta (array[Index Meta])
+    
++ Response 400 (application/json)
 
-### Create a New Question [POST]
+    Bad request. An invalid format has been provided.
+    
+    + Attributes (400Error)
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+    
+### Get planet by id[GET /v1/planets/{planet_id}]
+Returns a single planet.
 
-+ Request (application/json)
++ Parameters
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+    + planet_id (required, uuid, `b1c59329-93f4-49a9-8a77-80c5951b5b75`) ... An unique identifier of the planet.
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
-    + Headers
+    + Attributes 
+        + data (Attrs Planet)
 
-            Location: /questions/2
+    
++ Response 400 (application/json)
 
-    + Body
+    Bad request. An invalid format has been provided.
+    
+    + Attributes (400Error)
+    
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+
+### Delete planet [DELETE /v1/planets/{id}]
+Deletes a planet.
+
++ Parameters
+
+    + id: `b321683c-2810-4f28-b349-92802cf60936` (uuid-v4) - An unique identifier of the NGO. 
+
++ Response 204 (application/json)
+   
++ Response 400 (application/json)
+
+    Bad request. An invalid format has been provided.
+    
+    + Attributes (400Error)
+
+
+# Data Structures
+
+## datetime (string)
+Full datetime strings are in UTC format: `2022-01-09T14:40:30Z`
+### Sample: 2017-01-09T14:40:30Z
+
+## integer (number)
+Whole numbers without a decimal point.
+### Sample: 1
+
+## Index Meta (object)
++ page_number: 1 (integer, required) - The number of current page.
++ page_size: 10 (integer, required) - The number of entries to returned by page.
++ total_entries: 100 (integer, required) - Total entries.
++ total_pages: 2 (integer, required) - Total number of pages.
+
+## Attrs Film (object)
++ id: `00511768-d7fc-4de9-9be3-f38a750e4a9b` (string, required) - The unique identifier of film.
++ director: George Lucas (string, required) - The name of the director of this film.
++ title: A New Hope (string, required) - The title of film.
++ release_date: `1977-05-25` (string, nullable) - The ISO 8601 date format of film release at original creator country.
++ inserted_at: `2023-01-15T14:40:30Z` (datetime, nullable) - The date the film was inserted.
++ inserted_at: `2023-01-15T14:40:30Z` (datetime, nullable) - The date the film was updated.
+
+## Attrs Planet (object)
++ id: `3e498e4b-8db3-41b6-9320-e24109061d6f` (string, required) - The unique identifier of planet.
++ climate: temperate (string, required) - The climate of this planet. Comma separated if diverse.
++ name: Yavin IV (string, required) - The name of this planet.
++ terrain: jungle (string, required) - The terrain of this planet. Comma separated if diverse.
++ inserted_at: `2022-11-15T14:40:30Z` (datetime, nullable) - The date the planet was inserted.
++ inserted_at: `2022-11-15T14:40:30Z` (datetime, nullable) - The date the planet was updated.
++ films (array[Attrs Film])
+
+## Attrs Meals (object)
++ id: `634498e6-2e36-4505-9a2e-d69ee4679e07` (string, required) - The unique identifier of donation made.
++ type: meals (string, required) - Type of donation (cause).
++ date: `2022-11-24T00:00:00Z` (datetime, required) - The date and time of donation made.
+
+## Attrs Water (object)
++ id: `16e49d21-3dc5-4f6c-8753-ca660f7ec126` (string, required) - The unique identifier of donation made.
++ type: water (string, required) - Type of donation (cause).
++ date: `2022-12-25T00:00:00Z` (datetime, required) - The date and time of donation made.
+
+## 400Error(object)
++ errors (object)
+    + detail: Bad request (string) - Bad request. An invalid format has been provided.
+
+## 401Error(object)
++ errors (object)
+    + detail: Not authorized (string) - Not authorized.    
+    
+## 403Error(object)
++ errors (object)
+    + detail: Forbidden (string) - Forbidden.
+            
+## 404Error(object)
++ errors (object)
+    + detail: Not found (string) - Not found.
+    
+## 422Error(object)
++ errors (object)
+    + detail: can't be blank (string) - Unprocessable entity.    
+
+## 500Error(object)
++ errors (object)
+    + detail: Internal server error (string) - Internal server error.
