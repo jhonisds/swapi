@@ -140,3 +140,91 @@
 17:36:25.137 module=Phoenix.Logger [info] Sent 404 in 100ms
 17:36:28.849 module=Phoenix.Logger [info] GET /v1/planets
 17:36:28.906 module=Phoenix.Logger [info] Sent 200 in 57ms
+19:39:02.764 module=Swapi.Cli.UserInterface function_name=input [info] Planets was successfully integrated! - %Swapi.Entities.Planet{__meta__: #Ecto.Schema.Metadata<:loaded, "planets">, id: "16ced80f-63d0-4bd4-a758-6c45dce66646", name: "Tatooine", climate: "arid", terrain: "desert", integration_id: "1", deleted_at: nil, inserted_at: ~U[2023-01-03 19:14:57.043596Z], updated_at: ~U[2023-01-03 19:14:57.043596Z], films: [%Swapi.Entities.Film{__meta__: #Ecto.Schema.Metadata<:loaded, "films">, id: "574f49a6-3a83-45ef-9004-c3cdef78b691", title: "A New Hope", release_date: ~D[1977-05-25], director: "George Lucas", integration_id: "1", deleted_at: nil, inserted_at: ~U[2023-01-03 19:14:57.008026Z], updated_at: ~U[2023-01-03 19:14:57.008026Z]}, %Swapi.Entities.Film{__meta__: #Ecto.Schema.Metadata<:loaded, "films">, id: "cf988bcd-1f5b-436a-b583-93181fbb12cb", title: "Return of the Jedi", release_date: ~D[1983-05-25], director: "Richard Marquand", integration_id: "3", deleted_at: nil, inserted_at: ~U[2023-01-03 19:14:57.023223Z], updated_at: ~U[2023-01-03 19:14:57.023223Z]}, %Swapi.Entities.Film{__meta__: #Ecto.Schema.Metadata<:loaded, "films">, id: "08a22e49-d854-4bd8-8d3d-a46f9373034b", title: "The Phantom Menace", release_date: ~D[1999-05-19], director: "George Lucas", integration_id: "4", deleted_at: nil, inserted_at: ~U[2023-01-03 19:14:57.026523Z], updated_at: ~U[2023-01-03 19:14:57.026523Z]}, %Swapi.Entities.Film{__meta__: #Ecto.Schema.Metadata<:loaded, "films">, id: "60dfcd57-f5aa-44a8-ac7e-9f3273a57a69", title: "Attack of the Clones", release_date: ~D[2002-05-16], director: "George Lucas", integration_id: "5", deleted_at: nil, inserted_at: ~U[2023-01-03 19:14:57.029484Z], updated_at: ~U[2023-01-03 19:14:57.029484Z]}, %Swapi.Entities.Film{__meta__: #Ecto.Schema.Metadata<:loaded, "films">, id: "faa327da-1091-4507-bd14-024040daa576", title: "Revenge of the Sith", release_date: ~D[2005-05-19], director: "George Lucas", integration_id: "6", deleted_at: nil, inserted_at: ~U[2023-01-03 19:14:57.034129Z], updated_at: ~U[2023-01-03 19:14:57.034129Z]}]}
+20:57:45.746 [error] Failed to start Ranch listener SwapiWeb.Endpoint.HTTP in :ranch_tcp:listen([cacerts: :..., key: :..., cert: :..., ip: {0, 0, 0, 0}, port: 4000]) for reason :eaddrinuse (address already in use)
+
+20:57:45.770 module=application_controller [info] Application swapi exited: Swapi.Application.start(:normal, []) returned an error: shutdown: failed to start child: SwapiWeb.Endpoint
+    ** (EXIT) shutdown: failed to start child: {:ranch_listener_sup, SwapiWeb.Endpoint.HTTP}
+        ** (EXIT) an exception was raised:
+            ** (ArgumentError) errors were found at the given arguments:
+
+  * 2nd argument: not a key that exists in the table
+
+                (stdlib 4.2) :ets.lookup_element(:ranch_server, {:addr, SwapiWeb.Endpoint.HTTP}, 2)
+                (ranch 1.8.0) /Users/jsousa/Projects/elixir_code/swapi/deps/ranch/src/ranch_server.erl:113: :ranch_server.get_addr/1
+                (phoenix 1.6.15) lib/phoenix/endpoint/cowboy2_adapter.ex:119: Phoenix.Endpoint.Cowboy2Adapter.bound_address/2
+                (phoenix 1.6.15) lib/phoenix/endpoint/cowboy2_adapter.ex:115: Phoenix.Endpoint.Cowboy2Adapter.info/3
+                (phoenix 1.6.15) lib/phoenix/endpoint/cowboy2_adapter.ex:101: Phoenix.Endpoint.Cowboy2Adapter.start_link/3
+                (stdlib 4.2) supervisor.erl:414: :supervisor.do_start_child_i/3
+                (stdlib 4.2) supervisor.erl:400: :supervisor.do_start_child/2
+                (stdlib 4.2) supervisor.erl:384: anonymous fn/3 in :supervisor.start_children/2
+                (stdlib 4.2) supervisor.erl:1250: :supervisor.children_map/4
+                (stdlib 4.2) supervisor.erl:350: :supervisor.init_children/2
+                (stdlib 4.2) gen_server.erl:851: :gen_server.init_it/2
+                (stdlib 4.2) gen_server.erl:814: :gen_server.init_it/6
+                (stdlib 4.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+20:57:45.820 module=application_controller [info] Application httpoison exited: :stopped
+20:57:45.820 module=application_controller [info] Application hackney exited: :stopped
+20:57:45.820 module=application_controller [info] Application metrics exited: :stopped
+20:57:45.820 module=application_controller [info] Application ssl_verify_fun exited: :stopped
+20:57:45.820 module=application_controller [info] Application parse_trans exited: :stopped
+20:57:45.820 module=application_controller [info] Application syntax_tools exited: :stopped
+20:57:45.820 module=application_controller [info] Application certifi exited: :stopped
+20:57:45.820 module=application_controller [info] Application mimerl exited: :stopped
+20:57:45.820 module=application_controller [info] Application idna exited: :stopped
+20:57:45.820 module=application_controller [info] Application unicode_util_compat exited: :stopped
+20:57:45.820 module=application_controller [info] Application ecto_enum exited: :stopped
+20:57:45.820 module=application_controller [info] Application clean_architecture exited: :stopped
+20:57:45.820 module=application_controller [info] Application plug_cowboy exited: :stopped
+20:57:45.820 module=application_controller [info] Application cowboy_telemetry exited: :stopped
+20:57:45.821 module=application_controller [info] Application cowboy exited: :stopped
+20:57:45.821 module=application_controller [info] Application ranch exited: :stopped
+20:57:45.821 module=application_controller [info] Application cowlib exited: :stopped
+20:57:45.821 module=application_controller [info] Application jason exited: :stopped
+20:57:45.821 module=application_controller [info] Application gettext exited: :stopped
+20:57:45.821 module=application_controller [info] Application telemetry_poller exited: :stopped
+20:57:45.822 module=application_controller [info] Application phoenix_live_dashboard exited: :stopped
+20:57:45.822 module=application_controller [info] Application telemetry_metrics exited: :stopped
+20:57:45.822 module=application_controller [info] Application phoenix_live_view exited: :stopped
+20:57:45.822 module=application_controller [info] Application phoenix_html exited: :stopped
+20:57:45.822 module=application_controller [info] Application phoenix_ecto exited: :stopped
+20:57:45.822 module=application_controller [info] Application phoenix exited: :stopped
+20:57:45.822 module=application_controller [info] Application castore exited: :stopped
+20:57:45.822 module=application_controller [info] Application phoenix_view exited: :stopped
+20:57:45.822 module=application_controller [info] Application phoenix_template exited: :stopped
+20:57:45.823 module=application_controller [info] Application phoenix_pubsub exited: :stopped
+20:57:45.823 module=application_controller [info] Application plug exited: :stopped
+20:57:45.823 module=application_controller [info] Application plug_crypto exited: :stopped
+20:57:45.823 module=application_controller [info] Application mime exited: :stopped
+20:57:45.823 module=application_controller [info] Application runtime_tools exited: :stopped
+20:57:45.823 module=application_controller [info] Application logger_file_backend exited: :stopped
+20:57:58.367 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.692.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:58.367 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.691.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:58.367 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.695.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:58.367 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.687.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:58.368 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.689.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:59.330 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.693.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:59.331 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.690.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:59.331 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.688.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:59.331 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.686.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:59.331 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.694.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:34.226 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.686.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:34.226 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.693.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:34.227 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.694.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:34.227 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.688.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:34.227 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.690.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:35.216 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.695.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:35.216 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.689.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:35.217 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.687.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:35.217 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.691.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:35.218 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.692.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:56.459 module=Phoenix.Endpoint.Cowboy2Adapter [info] Running SwapiWeb.Endpoint with cowboy 2.9.0 at 0.0.0.0:4000 (http)
+20:58:56.475 module=Phoenix.Endpoint.Supervisor [info] Access SwapiWeb.Endpoint at http://localhost:4000
+20:59:06.006 module=Phoenix.Logger [info] GET /v1/planets/4d7bc2fd-2052-4ff1-865f-4ec9e934d31a
+20:59:06.190 module=Phoenix.Logger [info] Sent 404 in 184ms
+20:59:08.981 module=Phoenix.Logger [info] GET /v1/planets
+20:59:09.098 module=Phoenix.Logger [info] Sent 200 in 116ms
+20:59:29.897 module=Phoenix.Logger [info] GET /v1/planets/161b7122-abbf-495a-88ea-7da1d0902614
+20:59:29.901 module=Phoenix.Logger [info] Sent 200 in 3ms
+21:06:04.909 module=Phoenix.Logger [info] GET /v1/planets
+21:06:04.915 module=Phoenix.Logger [info] Sent 200 in 5ms

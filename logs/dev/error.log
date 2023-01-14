@@ -43,3 +43,25 @@ State: {:state, {#PID<0.844.0>, :poolboy_sup}, :simple_one_for_one, {[Hammer.Bac
 17:31:15.787 module=Swapi.Cli.UserInterface function_name=input [error] Resource not found - status code: 404
 17:33:29.213 [error] Failed to start Ranch listener SwapiWeb.Endpoint.HTTP in :ranch_tcp:listen([cacerts: :..., key: :..., cert: :..., ip: {0, 0, 0, 0}, port: 4000]) for reason :eaddrinuse (address already in use)
 
+20:57:45.746 [error] Failed to start Ranch listener SwapiWeb.Endpoint.HTTP in :ranch_tcp:listen([cacerts: :..., key: :..., cert: :..., ip: {0, 0, 0, 0}, port: 4000]) for reason :eaddrinuse (address already in use)
+
+20:57:58.367 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.692.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:58.367 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.691.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:58.367 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.695.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:58.367 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.687.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:58.368 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.689.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:59.330 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.693.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:59.331 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.690.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:59.331 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.688.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:59.331 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.686.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:57:59.331 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.694.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:34.226 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.686.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:34.226 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.693.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:34.227 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.694.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:34.227 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.688.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:34.227 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.690.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:35.216 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.695.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:35.216 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.689.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:35.217 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.687.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:35.217 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.691.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+20:58:35.218 module=DBConnection.Connection [error] Postgrex.Protocol (#PID<0.692.0>) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
